@@ -13,7 +13,7 @@ jobs:
       username: ${{ secrets.ACR_USERNAME }}
       password: ${{ secrets.ACR_PASSWORD }}
    - run: |
-      docker build -t webappacr.azurecr.io/mywebapp:v1 .
-      docker push webappacr.azurecr.io/mywebapp:v1
+      docker build . -t webappacr.azurecr.io/mywebapp
+      docker push webappacr.azurecr.io/mywebapp
 
  
