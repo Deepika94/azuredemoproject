@@ -31,7 +31,7 @@ jobs:
       tags: webappacr01.azurecr.io/mywebappacr:latest
 
    - name: Logout form Azure Container Registry
-     uses: docker/logout-action@v1
+     uses: dockerlogout webappacr01.azurecr.io
      
        
        
