@@ -30,8 +30,7 @@ jobs:
       push: true
       tags: webappacr01.azurecr.io/mywebappacr:latest
 
-   - name: Logout form Azure Container Registry
-     run: docker logout webappacr01.azurecr.io
+
      
        
        
