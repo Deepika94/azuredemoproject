@@ -23,7 +23,7 @@ jobs:
       push: true
       tags: webappacr01.azurecr.io/mywebappacr:latest
       env:
-       DOCKER_USERNAME: ${{secrets.ACR_USERNAME}}
-       DOCKER_PASSWORD: ${{secrets.ACR_PASSWORD}}
+       DOCKER_USERNAME: ${{ secrets.ACR_USERNAME }}
+       DOCKER_PASSWORD: ${{ secrets.ACR_PASSWORD }}
        
  
