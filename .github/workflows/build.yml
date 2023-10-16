@@ -39,7 +39,7 @@ jobs:
    - name: Configure Kubectl
      uses: azure/setup-kubectl@v1.0.1
      with:
-      secrets: ${{ secretes.KUBECONFIG }}
+      secrets: ${{ secrets.KUBECONFIG }}
 
    - name: Deploy application to AKS
      run: |
