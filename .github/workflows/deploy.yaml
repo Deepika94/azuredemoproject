@@ -16,5 +16,7 @@ steps:
 - name: Login to Azure CLI 
   uses: azure/login@v1
   with:
+    username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+    password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
    
     
