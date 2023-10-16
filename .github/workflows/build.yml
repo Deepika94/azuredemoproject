@@ -37,10 +37,22 @@ jobs:
        docker tag  webappacr01.azurecr.io/mywebappacr:latest webappacr01.azurecr.io/mywebappacr:lts
 
    - name: Configure Kubectl
-     uses: azure/setup-kubectl@v1.0.1
-     with:
-      secrets: ${{ secrets.KUBECONFIG }}
+     uses: azure/setup-kubectl@v3
 
+   - name: setup kubelogin
+     uses: azure/kubelogin@v1
+     with:
+       kubelogin-version: 'v1.26.6'
+
+   - name: set AKS content
+     id: set-context
+     uses: azure/aks-set-context@v3
+     with: 
+        resource-group: adm-deejayac1
+        cluster-name: webappaks
+        admin: 'false'
+        use-kubelogin: 'true'
+        
    - name: Deploy application to AKS
      run: |
        kubectl apply -f /home/adm-deepika/azuredemoproject/Deployment.yaml
