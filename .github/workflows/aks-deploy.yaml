@@ -8,14 +8,15 @@ jobs:
    runs-on: ubuntu-latest
    
    steps:
-   - name: Login to Docker Registry 
-     uses: docker/login-action@v3
+   - name: Login to Azure Registry 
+     uses: docker/login-action@v1
      with:
-       username: ${{ secrets.DOCKERHUB_USERNAME }}
-       password: ${{ secrets.DOCKERHUB_TOKEN }}
+       username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+       password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
   
    - name: Pull the Images from Dockerhub
-     run: docker pull deepikajag/aks-webapp:lts
+     run: |
+       az acr login --name webappacr01
        
    - name: setup Kubectl
      uses: azure/setup-kubectl@v3
