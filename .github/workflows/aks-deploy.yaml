@@ -18,8 +18,8 @@ jobs:
    - name: Configure Azure CLI 
      run: az configure --defaults acr=webappacr01
      
-   - name: Pull the Images from Azure ACR
-     run: az aks update --name webappaks --resource-group adm-deejayac1 --attach-acr webappacr01
+  # - name: Pull the Images from Azure ACR
+   #  run: az aks update --name webappaks --resource-group adm-deejayac1 --attach-acr webappacr01
      #uses: azure/acr-task-action@v1
      #with:
        #image: webappacr01.azurecr.io/mywebappacr:latest
