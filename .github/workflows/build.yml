@@ -26,6 +26,15 @@ jobs:
      uses: azure/use-kubelogin@v1
      with:
        kubelogin-version: 'v0.0.24'
+
+   - name: set AKS content
+     id: set-context
+     uses: azure/aks-set-context@v3
+     with: 
+       resource-group: adm-deejayac1
+       cluster-name: webappaks
+       admin: 'false'
+       use-kubelogin: 'true'
         
    - name: Deploy application to AKS
      run: |
