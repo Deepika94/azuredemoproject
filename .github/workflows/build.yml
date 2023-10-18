@@ -1,4 +1,4 @@
-name: Build Container Image and Push it to ACR
+name: Pull Images from Dockerhub to AKS 
 
 on:
  push:
