@@ -1,9 +1,7 @@
 name: Build Container Image and Push it to ACR
 
 on:
- push:
-  branches:
-    - main
+ workflow_dispatch:
   
 jobs:
   build-and-push:
