@@ -19,9 +19,9 @@ jobs:
      run: az configure --defaults acr=webappacr01
      
    - name: Pull the Images from Azure ACR
-     run: |
-       az acr login --name webappacr01
-       docker pull webappacr01.azurecr.io/mywebappacr:latest
+     uses: azure/acr-task-action@v1
+     with:
+       image: webappacr01.azurecr.io/mywebappacr:latest
        
    - name: setup Kubectl
      uses: azure/setup-kubectl@v3
