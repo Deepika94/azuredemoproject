@@ -25,7 +25,7 @@ jobs:
    - name: setup kubelogin
      uses: azure/use-kubelogin@v1
      with:
-       kubelogin-version: 'v1.26.6'
+       kubelogin-version: 'v0.0.24'
 
    - name: set AKS content
      id: set-context
