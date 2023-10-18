@@ -11,34 +11,15 @@ jobs:
    - name: checkout Repository
      uses: actions/checkout@v2
 
-   - name: Login to Azure Container Registry 
-     uses: docker/login-action@v1
+   - name: Login to Docker Registry 
+     uses: docker/login-action@v3
      with:
-       username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
-       password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
-       registry: webappacr01.azurecr.io
-       
-   - name: Setup Docker Buildx
-     uses: docker/setup-buildx-action@v1
-
-   - name: Build and push Docker Images
-     uses: docker/build-push-action@v2
-     with:
-      context: .
-      push: true
-      tags: webappacr01.azurecr.io/mywebappacr:latest
-
-   - name: Setup Azure CLI 
-     uses: azure/login@v1
-     with:
-      creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-   - name: Pull the Images from Azure ACR
-     run: |
-       az acr login --name webappacr01
-       docker pull webappacr01.azurecr.io/mywebappacr:latest
-       docker tag  webappacr01.azurecr.io/mywebappacr:latest webappacr01.azurecr.io/mywebappacr:lts
-
+       username: ${{ secrets.DOCKERHUB_USERNAME }}
+       password: ${{ secrets.DOCKERHUB_TOKEN }}
+  
+   - name: Pull the Images from Dockerhub
+     run: docker pull deepikajag/aks-webapp:lts
+    
    - name: Configure Kubectl
      uses: azure/setup-kubectl@v3
 
