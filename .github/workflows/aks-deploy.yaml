@@ -25,7 +25,7 @@ jobs:
        #image: webappacr01.azurecr.io/mywebappacr:latest
        
    - name: setup Kubectl
-     run: 	az aks get-credentials --resource-group adm-deejayac1 --name myAKSDemo
+     run: az aks get-credentials --resource-group adm-deejayac1 --name webappaks
 
 
      # name: Configure Kubernetes CLI
