@@ -25,21 +25,22 @@ jobs:
        #image: webappacr01.azurecr.io/mywebappacr:latest
        
    - name: setup Kubectl
-     uses: azure/setup-kubectl@v3
+     run: 	az aks get-credentials --resource-group adm-deejayac1 --name myAKSDemo
 
-   - name: Configure Kubernetes CLI
-     run: kubectl config set-context your-deploy-aks --cluster=webappaks --user=clusterUser_webappaks
+
+     # name: Configure Kubernetes CLI
+     #run: kubectl config set-context your-deploy-aks --cluster=webappaks --user=clusterUser_webappaks
 
    - name: checkout code
      uses: actions/checkout@v2
         
    - name: Deploy application to AKS
      run: |
-       kubectl apply -f Deployment.yaml
+       kubectl apply -f /home/adm-deepika/azuredemoproject/deployment.yaml
 
    - name: Deploy application to AKS
      run: |
-       kubectl apply -f service.yaml
+       kubectl apply -f /home/adm-deepika/azuredemoproject/service.yaml
 
    
 
