@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: webappacr-aks
+  labels:
+   app: webapp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-demo
+  template:
+    metadata:
+     labels:
+      app: webapp-demo
+    spec:
+     containers:
+     - name: Docker
+       image: deepikajag/aks-webapp:lts
+       ports:
+       - containerPort: 80
+     
+
