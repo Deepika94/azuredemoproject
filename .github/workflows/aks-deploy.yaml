@@ -1,4 +1,4 @@
-name: Build Container Image and Push it to ACR
+name: Pull Image from ACR & Deploy to AKS
 
 on:
  workflow_dispatch:
