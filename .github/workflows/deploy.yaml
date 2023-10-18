@@ -2,8 +2,7 @@ name: Deploy application to AKS from ACR
 
 on:
  push:
-   branches:
-   - main
+   workflow_dispatch:
 
 jobs:
  deploy: 
@@ -14,21 +13,17 @@ steps:
   uses: actions/checkout@v2
 
 - name: Login to Azure CLI 
-  uses: azure/login@v1
+  uses: docker/login@v1
   with:
-    username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
-    password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+    username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+    password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
     
 - name: Pull the Images from Azure ACR
-  run: |
-    az acr login --name webappacr01
-    docker pull webappacr01.azurecr.io/mywebappacr:latest
-    docker tag  webappacr01.azurecr.io/mywebappacr:latest webappacr01.azurecr.io/mywebappacr:lts
-
-- name: Configure Kubectl
-  uses: azure/setup-kubectl@v1.0.1
+  run: docker pull deepikajag/aks-webapp:lts
+    
+- uses: azure/use-kubelogin@v1
   with:
-    secrets: ${{ secretes.KUBECONFIG }}
+    kubelogin-version: 'v0.0.24'
 
 - name: Deploy application to AKS
   run: |
