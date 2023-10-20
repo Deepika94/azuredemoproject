@@ -19,7 +19,7 @@ jobs:
       # subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Set Azure subscriptions
-      run: az account set --subscription "202bda58-4fd8-4bba-8bb5-0651034f02de"
+      run: az account set --subscription 202bda58-4fd8-4bba-8bb5-0651034f02de
 
     - name: Pull the Images from Azure ACR
       run: docker pull webappacr01.azurecr.io/mydeploy:lts
